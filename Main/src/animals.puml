@@ -1,0 +1,11 @@
+@startuml
+class Main
+abstract class Animals
+class Dogs
+class Cats
+
+Main <-- Animals
+Animals --> Dogs
+Animals --> Cats
+
+@enduml
