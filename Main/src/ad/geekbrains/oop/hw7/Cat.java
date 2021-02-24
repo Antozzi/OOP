@@ -19,7 +19,9 @@ public class Cat {
     }
 
     public void eat(Plate p) {
-        if (hungry && p.decreaseFood(appetite)) hungry = false;
+        if (hungry && p.decreaseFood(appetite)) {
+            hungry = false;
+        } else  hungry = true;
     }
 
 }
