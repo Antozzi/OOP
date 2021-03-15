@@ -1,4 +1,5 @@
 package ad.geekbrains.gui.calc2;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -10,17 +11,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class CalculatorFrame2 extends JFrame implements ActionListener {
 
-    private JPanel contentPane;
     private JMenu jMenuFile, jMenuHelp, jMenuExit;
-    private JPanel jMaster, jplBackSpace, jplControl;
-    private JLabel jLabelOuput;
-    private JButton JbnButtons[];
+    private final JLabel jLabelOuput;
     private boolean firstInput = true;
     private String numStr1 = "";
     private String numStr2 = "";
@@ -31,72 +28,72 @@ public class CalculatorFrame2 extends JFrame implements ActionListener {
     public CalculatorFrame2() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 700, 500);
-        contentPane = new JPanel();
+        JPanel contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
 
         // frame component
-        jMaster = new JPanel();
+        JPanel jMaster = new JPanel();
         jLabelOuput = new JLabel("");
 
         // add our component to frame
         getContentPane().add(jLabelOuput, BorderLayout.NORTH);
-        JbnButtons = new JButton[32];
+        JButton[] jbnButtons = new JButton[32];
 
         for (int i = 0; i <= 9; i++) {
-            JbnButtons[i] = new JButton(String.valueOf(i));
+            jbnButtons[i] = new JButton(String.valueOf(i));
         }
 
 
         // Create operator Jbuttons
-        JbnButtons[10] = new JButton("+/-");
-        JbnButtons[11] = new JButton(".");
-        JbnButtons[12] = new JButton("=");
-        JbnButtons[13] = new JButton("/");
-        JbnButtons[14] = new JButton("*");
-        JbnButtons[15] = new JButton("-");
-        JbnButtons[16] = new JButton("+");
-        JbnButtons[17] = new JButton("--");
-        JbnButtons[18] = new JButton("1/x");
-        JbnButtons[19] = new JButton("%");
-        jplBackSpace = new JPanel();
+        jbnButtons[10] = new JButton("+/-");
+        jbnButtons[11] = new JButton(".");
+        jbnButtons[12] = new JButton("=");
+        jbnButtons[13] = new JButton("/");
+        jbnButtons[14] = new JButton("*");
+        jbnButtons[15] = new JButton("-");
+        jbnButtons[16] = new JButton("+");
+        jbnButtons[17] = new JButton("--");
+        jbnButtons[18] = new JButton("1/x");
+        jbnButtons[19] = new JButton("%");
+        JPanel jplBackSpace = new JPanel();
         jplBackSpace.setLayout(new GridLayout(1, 1, 1, 1));
-        JbnButtons[20] = new JButton("Backspace");
-        jplBackSpace.add(JbnButtons[20]);
-        jplControl = new JPanel();
+        jbnButtons[20] = new JButton("Backspace");
+        jplBackSpace.add(jbnButtons[20]);
+        JPanel jplControl = new JPanel();
         jplControl.setLayout(new GridLayout(1, 8, 1, 1));
-        JbnButtons[21] = new JButton(" CE ");
-        JbnButtons[22] = new JButton("C");
-        JbnButtons[23] = new JButton("sqrt");
-        JbnButtons[24] = new JButton("cosh");
-        JbnButtons[25] = new JButton("tan");
-        JbnButtons[26] = new JButton("ln");
-        JbnButtons[27] = new JButton("exp");
-        JbnButtons[28] = new JButton("abs");
-        JbnButtons[29] = new JButton("hex");
-        JbnButtons[30] = new JButton("bin");
-        JbnButtons[31] = new JButton("%");
-        jplControl.add(JbnButtons[23]);
-        jplControl.add(JbnButtons[21]);
-        jplControl.add(JbnButtons[22]);
-        jplControl.add(JbnButtons[23]);
-        jplControl.add(JbnButtons[24]);
-        jplControl.add(JbnButtons[25]);
-        jplControl.add(JbnButtons[26]);
-        jplControl.add(JbnButtons[27]);
-        jplControl.add(JbnButtons[28]);
-        jplControl.add(JbnButtons[29]);
-        jplControl.add(JbnButtons[30]);
-        jplControl.add(JbnButtons[31]);
+        jbnButtons[21] = new JButton(" CE ");
+        jbnButtons[22] = new JButton("C");
+        jbnButtons[23] = new JButton("sqrt");
+        jbnButtons[24] = new JButton("cosh");
+        jbnButtons[25] = new JButton("tan");
+        jbnButtons[26] = new JButton("ln");
+        jbnButtons[27] = new JButton("exp");
+        jbnButtons[28] = new JButton("abs");
+        jbnButtons[29] = new JButton("hex");
+        jbnButtons[30] = new JButton("bin");
+        jbnButtons[31] = new JButton("%");
+        jplControl.add(jbnButtons[23]);
+        jplControl.add(jbnButtons[21]);
+        jplControl.add(jbnButtons[22]);
+        jplControl.add(jbnButtons[23]);
+        jplControl.add(jbnButtons[24]);
+        jplControl.add(jbnButtons[25]);
+        jplControl.add(jbnButtons[26]);
+        jplControl.add(jbnButtons[27]);
+        jplControl.add(jbnButtons[28]);
+        jplControl.add(jbnButtons[29]);
+        jplControl.add(jbnButtons[30]);
+        jplControl.add(jbnButtons[31]);
 
         //Setting all Numbered JButton's to Blue. The rest to Red
-        for (int i = 0; i < JbnButtons.length; i++) {
-            JbnButtons[i].setFont(f12);
+        for (int i = 0; i < jbnButtons.length; i++) {
+            jbnButtons[i].setFont(f12);
             if (i < 10)
-                JbnButtons[i].setForeground(Color.blue);
+                jbnButtons[i].setForeground(Color.blue);
             else
-                JbnButtons[i].setForeground(Color.red);
+                jbnButtons[i].setForeground(Color.red);
         }
 
         JPanel jPLButtons = new JPanel();
@@ -104,32 +101,32 @@ public class CalculatorFrame2 extends JFrame implements ActionListener {
 
         // add button to the jPLButtons
         for (int i = 7; i <= 9; i++) {
-            jPLButtons.add(JbnButtons[i]);
+            jPLButtons.add(jbnButtons[i]);
         }
         // add button / and sqrt
-        jPLButtons.add(JbnButtons[13]);
-        jPLButtons.add(JbnButtons[17]);
+        jPLButtons.add(jbnButtons[13]);
+        jPLButtons.add(jbnButtons[17]);
         // Second row
         for (int i = 4; i <= 6; i++) {
-            jPLButtons.add(JbnButtons[i]);
+            jPLButtons.add(jbnButtons[i]);
         }
         // add button * and x^2
-        jPLButtons.add(JbnButtons[14]);
-        jPLButtons.add(JbnButtons[18]);
+        jPLButtons.add(jbnButtons[14]);
+        jPLButtons.add(jbnButtons[18]);
         // Third row
         for (int i = 1; i <= 3; i++) {
-            jPLButtons.add(JbnButtons[i]);
+            jPLButtons.add(jbnButtons[i]);
         }
         //adds button - and %
-        jPLButtons.add(JbnButtons[15]);
-        jPLButtons.add(JbnButtons[19]);
+        jPLButtons.add(jbnButtons[15]);
+        jPLButtons.add(jbnButtons[19]);
         //Fourth Row
         // add 0, +/-, ., +, and =
-        jPLButtons.add(JbnButtons[0]);
-        jPLButtons.add(JbnButtons[10]);
-        jPLButtons.add(JbnButtons[11]);
-        jPLButtons.add(JbnButtons[16]);
-        jPLButtons.add(JbnButtons[12]);
+        jPLButtons.add(jbnButtons[0]);
+        jPLButtons.add(jbnButtons[10]);
+        jPLButtons.add(jbnButtons[11]);
+        jPLButtons.add(jbnButtons[16]);
+        jPLButtons.add(jbnButtons[12]);
 
         jMaster.setLayout(new BorderLayout());
         jMaster.add(jPLButtons, BorderLayout.SOUTH);
@@ -138,8 +135,8 @@ public class CalculatorFrame2 extends JFrame implements ActionListener {
         getContentPane().add(jMaster, BorderLayout.SOUTH);
         requestFocus();
 
-        for (int i = 0; i < JbnButtons.length; i++) {
-            JbnButtons[i].addActionListener(this);
+        for (JButton jbnButton : jbnButtons) {
+            jbnButton.addActionListener(this);
         }
     }
 
@@ -205,15 +202,13 @@ public class CalculatorFrame2 extends JFrame implements ActionListener {
                 } catch (NumberFormatException e) {
                     resultat = Float.parseFloat(numStr1) + Float.parseFloat(numStr2);
                 }
-                ;
                 break;
             case '-':
                 try {
-                resultat = Integer.parseInt(numStr1) - Integer.parseInt(numStr2);
+                    resultat = Integer.parseInt(numStr1) - Integer.parseInt(numStr2);
                 } catch (NumberFormatException e) {
                     resultat = Float.parseFloat(numStr1) - Float.parseFloat(numStr2);
                 }
-                ;
                 break;
             case '*':
                 try {
@@ -221,7 +216,6 @@ public class CalculatorFrame2 extends JFrame implements ActionListener {
                 } catch (NumberFormatException e) {
                     resultat = Float.parseFloat(numStr1) * Float.parseFloat(numStr2);
                 }
-                ;
                 break;
             case 'h':
                 resultat = Integer.parseInt(numStr1, 16);
